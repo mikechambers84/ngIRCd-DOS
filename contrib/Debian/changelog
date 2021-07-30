@@ -1,0 +1,586 @@
+ngircd (26.1-0ab1) unstable; urgency=medium
+
+  * New "upstream" release: ngIRCd 26.1.
+
+ -- Alexander Barton <alex@barton.de>  Sat, 02 Jan 2021 14:31:51 +0100
+
+ngircd (26-0ab1) unstable; urgency=medium
+
+  * New "upstream" release: ngIRCd 26.
+
+ -- Alexander Barton <alex@barton.de>  Sat, 20 Jun 2020 15:26:46 +0200
+
+ngircd (26~rc2-0ab1) unstable; urgency=low
+
+  * New "upstream" release candidate 2 for ngIRCd Release 26.
+
+ -- Alexander Barton <alex@barton.de>  Thu, 11 Jun 2020 17:21:17 +0200
+
+ngircd (26~rc1-0ab1) unstable; urgency=low
+
+  * New "upstream" release candidate 1 for ngIRCd Release 26.
+
+ -- Alexander Barton <alex@barton.de>  Sun, 10 May 2020 17:13:17 +0200
+
+ngircd (25-0ab1) unstable; urgency=low
+
+  * New "upstream" release: ngIRCd 25.
+
+ -- Alexander Barton <alex@barton.de>  Wed, 23 Jan 2019 23:13:03 +0100
+
+ngircd (25~rc1-0ab1) unstable; urgency=low
+
+  * New "upstream" release candidate 1 for ngIRCd Release 25.
+
+ -- Alexander Barton <alex@barton.de>  Sat, 11 Aug 2018 21:35:08 +0200
+
+ngircd (24-0ab1) unstable; urgency=low
+
+  * New "upstream" release: ngIRCd 24.
+
+ -- Alexander Barton <alex@barton.de>  Fri, 20 Jan 2017 16:43:09 +0100
+
+ngircd (24~rc1-0ab2) unstable; urgency=low
+
+  * Use OpenSSL instead of GnuTLS for SSL-enabled packages.
+
+ -- Alexander Barton <alex@barton.de>  Fri, 20 Jan 2017 15:20:07 +0100
+
+ngircd (24~rc1-0ab1) unstable; urgency=low
+
+  * New "upstream" release candidate 1 for ngIRCd Release 24.
+
+ -- Alexander Barton <alex@barton.de>  Sat, 07 Jan 2017 18:58:02 +0100
+
+ngircd (23-0ab1) unstable; urgency=low
+
+  * New "upstream" release: ngIRCd 23.
+
+ -- Alexander Barton <alex@barton.de>  Mon, 16 Nov 2015 21:27:03 +0100
+
+ngircd (23~rc1-0ab1) unstable; urgency=low
+
+  * New "upstream" release candidate 1 for ngIRCd Release 23.
+
+ -- Alexander Barton <alex@barton.de>  Sun, 06 Sep 2015 16:55:23 +0200
+
+ngircd (22.1-0ab1) unstable; urgency=low
+
+  * New "upstream" release: ngIRCd 22.1.
+
+ -- Alexander Barton <alex@barton.de>  Mon, 06 Apr 2015 14:34:50 +0200
+
+ngircd (22-0ab1) unstable; urgency=low
+
+  * New "upstream" release: ngIRCd 22.
+
+ -- Alexander Barton <alex@barton.de>  Sat, 11 Oct 2014 20:29:03 +0200
+
+ngircd (22~rc1-0ab1) unstable; urgency=low
+
+  * New "upstream" release candidate 1 for ngIRCd Release 22.
+
+ -- Alexander Barton <alex@barton.de>  Mon, 29 Sep 2014 17:07:55 +0200
+
+ngircd (21.1-0ab2) unstable; urgency=low
+
+  * Use correct package name in pathname to "HelpFile" (Command.txt)
+    in "ngircd-full" and "ngircd-full-dbg" packages.
+  * Don't adjust path names that are correct by default.
+
+ -- Alexander Barton <alex@barton.de>  Mon, 14 Jul 2014 11:20:17 +0200
+
+ngircd (21.1-0ab1) unstable; urgency=low
+
+  * New "upstream" release: ngIRCd 21.1.
+
+ -- Alexander Barton <alex@barton.de>  Tue, 25 Mar 2014 14:44:59 +0100
+
+ngircd (21-0ab1) unstable; urgency=low
+
+  * New "upstream" release: ngIRCd 21.
+
+ -- Alexander Barton <alex@barton.de>  Wed, 30 Oct 2013 22:13:55 +0100
+
+ngircd (21~rc2-0ab3) unstable; urgency=low
+
+  * Fix sed(1) rules adjusting "ngircd-full" package, error introduced
+    by last commit :-/
+
+ -- Alexander Barton <alex@barton.de>  Sun, 20 Oct 2013 18:31:16 +0200
+
+ngircd (21~rc2-0ab2) unstable; urgency=low
+
+  * Fix default "HelpFile" file name in ngircd.conf for "full" packages.
+
+ -- Alexander Barton <alex@barton.de>  Sun, 20 Oct 2013 17:18:28 +0200
+
+ngircd (21~rc2-0ab1) unstable; urgency=low
+
+  * New "upstream" release candidate 2 for ngIRCd Release 21.
+
+ -- Alexander Barton <alex@barton.de>  Sun, 20 Oct 2013 15:50:03 +0200
+
+ngircd (21~rc1-0ab1) unstable; urgency=low
+
+  * New "upstream" release candidate 1 for ngIRCd Release 21.
+
+ -- Alexander Barton <alex@barton.de>  Sat, 05 Oct 2013 23:24:09 +0200
+
+ngircd (20.3-0ab1) unstable; urgency=high
+
+  * New "upstream" release, fixing a security related bug: ngIRCd 20.3.
+
+ -- Alexander Barton <alex@barton.de>  Fri, 23 Aug 2013 21:53:21 +0200
+
+ngircd (20.2-0ab1) unstable; urgency=high
+
+  * New "upstream" release, fixing a security related bug: ngIRCd 20.2.
+
+ -- Alexander Barton <alex@barton.de>  Fri, 15 Feb 2013 12:17:00 +0100
+
+ngircd (20.1-0ab1) unstable; urgency=low
+
+  * New "upstream" release: ngIRCd 20.1.
+
+ -- Alexander Barton <alex@barton.de>  Wed, 02 Jan 2013 22:37:26 +0100
+
+ngircd (20-0ab1) unstable; urgency=low
+
+  * New "upstream" release: ngIRCd 20.
+
+ -- Alexander Barton <alex@barton.de>  Mon, 17 Dec 2012 13:04:15 +0100
+
+ngircd (20~rc2-0ab1) unstable; urgency=low
+
+  * New "upstream" release candidate 2 for ngIRCd Release 20.
+
+ -- Alexander Barton <alex@barton.de>  Sun, 02 Dec 2012 18:51:06 +0100
+
+ngircd (20~rc1-0ab1) unstable; urgency=low
+
+  * New "upstream" release candidate 1 for ngIRCd Release 20.
+
+ -- Alexander Barton <alex@barton.de>  Sun, 11 Nov 2012 16:03:32 +0100
+
+ngircd (19.2-0ab1) unstable; urgency=low
+
+  * New "upstream" release: ngIRCd 19.2.
+
+ -- Alexander Barton <alex@barton.de>  Tue, 19 Jun 2012 11:03:12 +0200
+
+ngircd (19.2~rc1-0ab1) unstable; urgency=low
+
+  * New "upstream" release candidate 1 for ngIRC Release 19.2.
+
+ -- Alexander Barton <alex@barton.de>  Wed, 13 Jun 2012 10:59:34 +0200
+
+ngircd (19.1-0ab1) unstable; urgency=low
+
+  * New "upstream" release: ngIRCd 19.1.
+
+ -- Alexander Barton <alex@barton.de>  Mon, 19 Mar 2012 19:18:28 +0100
+
+ngircd (19-0ab1) unstable; urgency=low
+
+  * New "upstream" release: ngIRCd 19.
+
+ -- Alexander Barton <alex@barton.de>  Wed, 29 Feb 2012 17:34:08 +0100
+
+ngircd (19~rc1-0ab1) unstable; urgency=low
+
+  * New "upstream" release candidate 1 for ngIRCd Release 19.
+
+ -- Alexander Barton <alex@barton.de>  Sun, 12 Feb 2012 17:47:51 +0100
+
+ngircd (18-0ab1) unstable; urgency=low
+
+  * New "upstream" release: ngIRCd 18.
+
+ -- Alexander Barton <alex@barton.de>  Sun, 10 Jul 2011 20:03:20 +0200
+
+ngircd (18~rc2-0ab1) unstable; urgency=low
+
+  * New "upstream" release candidate 2 for ngIRCd Release 18.
+
+ -- Alexander Barton <alex@barton.de>  Wed, 29 Jun 2011 10:20:51 +0200
+
+ngircd (18~rc1-0ab1) unstable; urgency=low
+
+  * New "upstream" release candidate 1 for ngIRCd Release 18.
+
+ -- Alexander Barton <alex@barton.de>  Mon, 27 Jun 2011 22:58:36 +0200
+
+ngircd (17.1-0ab1) unstable; urgency=low
+
+  * New "upstream" release: ngIRCd 17.1.
+
+ -- Alexander Barton <alex@barton.de>  Sun, 19 Dec 2010 15:56:42 +0100
+
+ngircd (17-0ab1) unstable; urgency=low
+
+  * New "upstream" release: ngIRCd 17.
+
+ -- Alexander Barton <alex@barton.de>  Sun, 07 Nov 2010 17:23:07 +0100
+
+ngircd (17~rc3-0ab1) unstable; urgency=low
+
+  * New "upstream" release candidate 3 for ngIRCd Release 17.
+
+ -- Alexander Barton <alex@barton.de>  Wed, 27 Oct 2010 22:30:08 +0200
+
+ngircd (17~rc2-0ab2) unstable; urgency=low
+
+  * Install /etc/pam.d/ngircd including "auth required pam_permit.so" when
+    installing -full or -full-dbg variant to keep backwards compatibility.
+
+ -- Alexander Barton <alex@barton.de>  Tue, 26 Oct 2010 23:34:56 +0200
+
+ngircd (17~rc2-0ab1) unstable; urgency=low
+
+  * New "upstream" release candidate 2 for ngIRCd Release 17.
+
+ -- Alexander Barton <alex@barton.de>  Mon, 25 Oct 2010 18:51:15 +0200
+
+ngircd (17~rc1-0ab1) unstable; urgency=low
+
+  * New "upstream" release candidate 1 for ngIRCd Release 17.
+
+ -- Alexander Barton <alex@barton.de>  Mon, 11 Oct 2010 16:57:47 +0200
+
+ngircd (16-0ab1) unstable; urgency=low
+
+  * New "upstream" release: ngIRCd 16.
+
+ -- Alexander Barton <alex@barton.de>  Sun, 02 May 2010 13:32:41 +0200
+
+ngircd (16~rc2-0ab1) unstable; urgency=low
+
+  * New "upstream" release candidate 2 for ngIRCd Release 16.
+
+ -- Alexander Barton <alex@barton.de>  Sun, 25 Apr 2010 13:12:42 +0200
+
+ngircd (16~rc1-0ab1) unstable; urgency=low
+
+  * New "upstream" release candidate 1 for ngIRCd Release 16.
+
+ -- Alexander Barton <alex@barton.de>  Thu, 25 Mar 2010 15:56:03 +0200
+
+ngircd (15-0ab1) unstable; urgency=low
+
+  * New "upstream" release: ngIRCd 15.
+
+ -- Alexander Barton <alex@barton.de>  Thu,  7 Nov 2009 12:07:08 +0200
+
+ngircd (15~rc1-0ab1) unstable; urgency=low
+
+  * New "upstream" release candidate 1 for ngIRCd Release 15.
+
+ -- Alexander Barton <alex@barton.de>  Thu, 15 Oct 2009 10:01:08 +0200
+
+ngircd (14.1-0ab1) unstable; urgency=high
+
+  * New "upstream" release ngIRCd 14.1, fixing a security-related bug.
+
+ -- Alexander Barton <alex@barton.de>  Tue,  5 May 2009 13:13:38 +0200
+
+ngircd (14-0ab3) unstable; urgency=low
+
+  * Fixed "Conflicts:" line in debian/control: missing comma.
+
+ -- Alexander Barton <alex@barton.de>  Mon,  4 May 2009 11:21:55 +0200
+
+ngircd (14-0ab2) unstable; urgency=low
+
+  * Add new "ngircd-full-dbg" package including degug code and both
+    the --debug and --sniffer options, and containing debug symbols.
+
+ -- Alexander Barton <alex@barton.de>  Wed, 29 Apr 2009 01:13:03 +0200
+
+ngircd (14-0ab1) unstable; urgency=low
+
+  * New "upstream" release: ngIRCd 14.
+
+ -- Alexander Barton <alex@barton.de>  Mon, 20 Apr 2009 11:09:12 +0200
+
+ngircd (14~rc1-0ab1) unstable; urgency=low
+
+  * New "upstream" release candidate 1 for ngIRCd Release 14.
+
+ -- Alexander Barton <alex@barton.de>  Sun, 29 Mar 2009 17:09:17 +0200
+
+ngircd (13-0ab1) unstable; urgency=low
+
+  * New "upstream" release: ngIRCd 13.
+
+ -- Alexander Barton <alex@barton.de>  Thu, 25 Dec 2008 23:09:58 +0100
+
+ngircd (13~rc1-0ab1) unstable; urgency=low
+
+  * New "upstream" release candidate 1 for ngIRCd Release 13.
+
+ -- Alexander Barton <alex@barton.de>  Fri, 21 Nov 2008 22:04:41 +0100
+
+ngircd (0.12.1-0ab1+dev) unstable; urgency=low
+
+  * Update package for testing the new "upstream" features:
+     - Support for IRC services (see http://www.ircservices.za.net),
+     - Encrypted connections using GNU TLS (ngircd-full),
+     - Support for the IPv6 protocol (ngircd-full).
+
+ -- Alexander Barton <alex@barton.de>  Fri, 03 Oct 2008 16:22:55 +0200
+
+ngircd (0.12.1-0ab1) unstable; urgency=low
+
+  * New "upstream" release ngIRCd 0.12.1.
+
+ -- Alexander Barton <alex@barton.de>  Wed,  9 Jul 2008 11:27:00 +0200
+
+ngircd (0.12.0-0ab1) unstable; urgency=low
+
+  * New "upstream" release ngIRCd 0.12.0.
+
+ -- Alexander Barton <alex@barton.de>  Tue, 13 May 2008 12:30:31 +0200
+
+ngircd (0.12.0-0ab0-pre2) unstable; urgency=low
+
+  * Second prerelease of upcoming new "upstrem" release 0.12.0-pre1.
+
+ -- Alexander Barton <alex@barton.de>  Tue, 29 Apr 2008 23:06:14 +0200
+
+ngircd (0.12.0-0ab0-pre1) unstable; urgency=low
+
+  * Prereloease of upcoming new "upstrem" release 0.12.0-pre1.
+
+ -- Alexander Barton <alex@barton.de>  Sun, 20 Apr 2008 15:43:34 +0200
+
+ngircd (0.11.0-0ab0-pre2) unstable; urgency=low
+
+  * Second prerelease of upcoming new "upstream release".
+
+ -- Alexander Barton <alex@barton.de>  Mon,  7 Jan 2008 15:32:42 +0100
+
+ngircd (0.11.0-0ab0-pre1) unstable; urgency=low
+
+  * Prerelease of upcoming new "upstream release".
+
+ -- Alexander Barton <alex@barton.de>  Wed,  2 Jan 2008 21:33:15 +0100
+
+ngircd (0.10.4-0ab1) unstable; urgency=high
+
+  * New "upstream" release: 0.10.4 - fixing a security bug.
+
+ -- Alexander Barton <alex@barton.de>  Mon,  7 Jan 2008 22:04:44 +0100
+
+ngircd (0.10.0-0ab1) unstable; urgency=low
+
+  * New "upstream" release: 0.10.0
+
+ -- Alexander Barton <alex@barton.de>  Sun,  1 Oct 2006 18:14:21 +0200
+
+ngircd (0.10.0-0ab0-pre2-1) unstable; urgency=low
+
+  * Bumped standards version to 3.7.2.1.
+  * Added "Provides: ircd" to Debian control file.
+
+ -- Alexander Barton <alex@barton.de>  Sun,  1 Oct 2006 16:25:33 +0200
+
+ngircd (0.10.0-0ab0-pre2) unstable; urgency=low
+
+  * Second "upstream" prerelease of upcoming 0.10.0 release.
+
+ -- Alexander Barton <alex@barton.de>  Sat,  9 Sep 2006 20:57:52 +0200
+
+ngircd (0.10.0-0ab0-pre1) unstable; urgency=low
+
+  * Prerelease of upcoming new "upstream release".
+
+ -- Alexander Barton <alex@barton.de>  Wed,  2 Aug 2006 12:01:07 +0200
+
+ngircd (0.9.2-0ab1) unstable; urgency=low
+
+  * New "upstream release" fixing a few bugs in 0.9.1.
+
+ -- Alexander Barton <alex@barton.de>  Sat, 15 Oct 2005 14:10:34 +0200
+
+ngircd (0.9.1-0ab1) unstable; urgency=medium
+
+  * New "upstream release" addressing two problems in ngIRCd 0.9.0.
+
+ -- Alexander Barton <alex@barton.de>  Wed,  3 Aug 2005 15:10:41 +0200
+
+ngircd (0.9.0-0ab2) unstable; urgency=medium
+
+  * Init script: fixed a problem with symbolic links in runlevel directories
+    that could prevent the init script from working correctly.
+
+ -- Alexander Barton <alex@barton.de>  Tue, 26 Jul 2005 21:31:18 +0200
+
+ngircd (0.9.0-0ab1) unstable; urgency=low
+
+  * New "upstream release".
+
+ -- Alexander Barton <alex@Arthur.Ath.CX>  Sat,  24 Jul 2005 23:30:00 +0200
+
+ngircd (0.8.3-0ab1) unstable; urgency=high
+
+  * New "upstream release", including security fixes.
+
+ -- Alexander Barton <alex@Arthur.Ath.CX>  Thu,  3 Feb 2005 10:41:55 +0100
+
+ngircd (0.8.2-0ab1) unstable; urgency=high
+
+  * New "upstream release", including security fixes.
+
+ -- Alexander Barton <alex@Arthur.Ath.CX>  Wed, 26 Jan 2005 23:14:12 +0100
+
+ngircd (0.8.1-0ab1) unstable; urgency=low
+
+  * New "upstream release".
+
+ -- Alexander Barton <alex@Arthur.Ath.CX>  Sat, 25 Dec 2004 01:18:32 +0100
+
+ngircd (0.8.0-0ab2) unstable; urgency=low
+
+  * Added missing commas to debian control file, fixes bug #56.
+    Thanks to Kevin Otte.
+
+ -- Alexander Barton <alex@Arthur.Ath.CX>  Thu, 15 Jul 2004 10:53:39 +0200
+
+ngircd (0.8.0-0ab1) unstable; urgency=low
+
+  * New upstream version.
+
+ -- Alexander Barton <alex@Arthur.Ath.CX>  Sat, 26 Jun 2004 11:25:59 +0200
+
+ngircd (0.7.7+HEAD-0ab6) unstable; urgency=low
+
+  * Incorporated actual CVS HEAD version which includes all features of
+    version 0.8.0-pre1 and patches for the resolver and logger.
+
+ -- Alexander Barton <alex@Arthur.Ath.CX>  Tue, 11 May 2004 02:18:50 +0200
+
+ngircd (0.7.7+HEAD-0ab5) unstable; urgency=low
+
+  * Updates from CVS HEAD branch, most notably: "INVITE- and BAN-lists
+    become synchronized between IRC+ servers when establishing new
+    connections, if the peer supports this as well."
+
+ -- Alexander Barton <alex@Arthur.Ath.CX>  Mon, 26 Apr 2004 01:53:15 +0200
+
+ngircd (0.7.7+HEAD-0ab4) unstable; urgency=low
+
+  * This version includes fixes for INVITE command and the handling of the
+    invite and ban lists from CVS-HEAD.
+
+ -- Alexander Barton <alex@Arthur.Ath.CX>  Fri,  9 Apr 2004 23:55:13 +0200
+
+ngircd (0.7.7+HEAD-0ab3) unstable; urgency=low
+
+  * Included MODE fix from CVS-HEAD branch.
+
+ -- Alexander Barton <alex@Arthur.Ath.CX>  Mon,  5 Apr 2004 13:09:24 +0200
+
+ngircd (0.7.7+HEAD-0ab2) unstable; urgency=low
+
+  * Incorporated more fixes and enhancements of CVS-HEAD version,
+    e. g. better connection logging and fixed TRACE command.
+
+ -- Alexander Barton <alex@Arthur.Ath.CX>  Sat, 28 Feb 2004 03:20:32 +0100
+
+ngircd (0.7.7+HEAD-0ab1) unstable; urgency=low
+
+  * New upstream version. This debian package includes all features of
+    ngIRCd 0.7.7 and changes of the CVS-HEAD development tree.
+
+ -- Alexander Barton <alex@Arthur.Ath.CX>  Thu,  5 Feb 2004 15:23:22 +0100
+
+ngircd (0.7.6+HEAD-0ab2) unstable; urgency=low
+
+  * Included new fixes and additions from the CVS-HEAD upstream branch,
+    e. g. the setting of type of service (TOS) on sockets.
+
+ -- Alexander Barton <alex@Arthur.Ath.CX>  Mon, 26 Jan 2004 04:05:41 +0100
+
+ngircd (0.7.6+HEAD-0ab1) unstable; urgency=low
+
+  * Included all changes from the CVS-HEAD upstream version.
+  * Restructured debian packaging system: now there are two packages, a
+    "standard" version that includes all the default options and a "full"
+    version that additionally includes support for TCP wrappers and IDENT
+    lookups.
+
+ -- Alexander Barton <alex@Arthur.Ath.CX>  Thu,  1 Jan 2004 23:12:11 +0100
+
+ngircd (0.7.6-0ab1) unstable; urgency=medium
+
+  * New upstream version.
+  * Changed version numvering scheme of debian package.
+
+ -- Alexander Barton <alex@Arthur.Ath.CX>  Fri,  5 Dec 2003 14:26:41 +0100
+
+ngircd (0.7.5-0.2ab) unstable; urgency=low
+
+  * Updated RPM and Debian package description and configuration.
+
+ -- Alexander Barton <alex@Arthur.Ath.CX>  Sat, 29 Nov 2003 21:24:32 +0100
+
+ngircd (0.7.5-0.1ab) unstable; urgency=low
+
+  * New upstream version.
+
+ -- Alexander Barton <alex@Arthur.Ath.CX>  Fri,  7 Nov 2003 21:59:58 +0100
+
+ngircd (0.7.1-0.1ab) unstable; urgency=low
+
+  * New upstream version :-)
+
+ -- Alexander Barton <alex@Arthur.Ath.CX>  Fri, 18 Jul 2003 22:53:02 +0200
+
+ngircd (0.7.0-0.7ab) unstable; urgency=low
+
+  * Fixed up post installation script (added interpreter, fixed chmod call).
+
+ -- Alexander Barton <alex@Arthur.Ath.CX>  Sun, 13 Jul 2003 00:52:38 +0200
+
+ngircd (0.7.0-0.6ab) unstable; urgency=low
+
+  * Added /etc/default/ngircd.
+  * Included own post installation script.
+
+ -- Alexander Barton <alex@Arthur.Ath.CX>  Sat, 12 Jul 2003 20:31:09 +0200
+
+ngircd (0.7.0-0.5ab) unstable; urgency=low
+
+  * Enhanced init script.
+  * Included NJOIN fix from actual CVS "HEAD" branch.
+
+ -- Alexander Barton <alex@Arthur.Ath.CX>  Wed,  9 Jul 2003 22:40:49 +0200
+
+ngircd (0.7.0-0.4ab) unstable; urgency=low
+
+  * Reverted use of dh_installexamples.
+
+ -- Alexander Barton <alex@Arthur.Ath.CX>  Thu, 22 May 2003 00:15:03 +0200
+
+ngircd (0.7.0-0.3ab) unstable; urgency=low
+
+  * Removed "debian/docs" and "debian/conffiles"; debhelper takes care of
+    this for us automagically.
+  * Excluded "etc/ngircd.conf" from dh_fixperms.
+
+ -- Alexander Barton <alex@Arthur.Ath.CX>  Wed, 21 May 2003 23:25:05 +0200
+
+ngircd (0.7.0-0.2ab) unstable; urgency=low
+
+  * Fixed wrong variable substitution in init script.
+  * Added some CVS "Id-Tags" (but not checked in, yet).
+  * Removed own "Provides:" from control file.
+
+ -- Alexander Barton <alex@barton.de>  Wed, 21 May 2003 12:32:34 +0200
+
+ngircd (0.7.0-0.1ab) unstable; urgency=low
+
+  * Initial Release.
+
+ -- Alexander Barton <alex@barton.de>  Wed, 21 May 2003 02:36:52 +0200

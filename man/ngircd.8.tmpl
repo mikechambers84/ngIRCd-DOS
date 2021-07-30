@@ -1,0 +1,124 @@
+.\"
+.\" ngircd(8) manual page template
+.\"
+.TH ngircd 8 "Jan 2021" ngIRCd "ngIRCd Manual"
+.SH NAME
+ngIRCd \- the "next generation" IRC daemon
+.SH SYNOPSIS
+.B ngircd
+[
+.I Options
+]
+.SH DESCRIPTION
+.BR ngIRCd
+is a free, portable and lightweight Internet Relay Chat server for small
+or private networks, developed under the GNU General Public License (GPL).
+.PP
+The server is quite easy to configure, can handle dynamic IP addresses, and
+optionally supports IDENT, IPv6 connections, SSL-protected links, and PAM for
+user authentication as well as character set conversion for legacy clients. The
+server has been written from scratch and is not based on the "forefather", the
+daemon of the IRCNet.
+.PP
+The name ngIRCd means
+.IR "next-generation IRC daemon",
+which is a little bit exaggerated:
+.IR "lightweight Internet Relay Chat server"
+most probably would have been a better name :-)
+.PP
+Currently supported platforms include AIX, A/UX, FreeBSD, HP-UX, Hurd, IRIX,
+Linux, Mac OS X, Minix, NetBSD, OpenBSD, Solaris, and Windows with Cygwin.
+As ngIRCd relies on UNIX standards and uses GNU automake and GNU autoconf
+there are good chances that it also supports other UNIX-based operating
+systems as well.
+.PP
+By default ngIRCd logs diagnostic and informational messages using the syslog
+mechanism, or writes directly to the console when running in the foreground
+(see below).
+.SH OPTIONS
+The default behavior of
+.BR ngircd
+is to read its standard configuration file (see below), to detach from the
+controlling terminal and to wait for clients.
+.PP
+You can use these options to modify this default:
+.TP
+\fB\-f\fR \fIfile\fR, \fB\-\-config\fR \fIfile\fR
+Use
+.I file
+as configuration file.
+.TP
+\fB\-n\fR, \fB\-\-nodaemon\fR
+Don't fork a child and don't detach from controlling terminal.
+All log messages go to the console and you can use CTRL-C to
+terminate the server.
+.TP
+\fB\-p\fR, \fB\-\-passive\fR
+Disable automatic connections to other servers. You can use the IRC command
+CONNECT later on as IRC Operator to link this ngIRCd to other servers.
+.TP
+\fB\-t\fR, \fB\-\-configtest\fR
+Read, validate and display the configuration; then exit.
+.TP
+\fB\-V\fR, \fB\-\-version\fR
+Output version information and exit.
+.TP
+\fB\-h\fR, \fB\-\-help\fR
+Display a brief help text and exit.
+.SH FILES
+.I :ETCDIR:/ngircd.conf
+.RS
+The system wide default configuration file.
+.RE
+.I :ETCDIR:/ngircd.motd
+.RS
+Default "message of the day" (MOTD).
+.RE
+.SH SIGNALS
+The daemon understands the following signals:
+.TP
+\fBTERM\fR
+Shut down all connections and terminate the daemon.
+.TP
+\fBHUP\fR
+Shut down all listening sockets, re-read the configuration file and
+re-initialize the daemon.
+.SH HINTS
+It's wise to use "ngircd \-\-configtest" to validate the configuration file
+after changing it.
+.SH DEBUGGING
+When ngIRCd is compiled with debug code, that is, its source code has
+been ./configure'd with "\-\-enable\-debug" and/or "\-\-enable\-sniffer" (witch
+enables debug mode automatically as well), you can use two more command
+line options and two more signals to debug problems with the daemon itself
+or IRC clients:
+.PP
+\fBOptions:\fR
+.TP
+\fB\-d\fR, \fB\-\-debug\fR
+Enable debug mode and log extra messages.
+.TP
+\fB\-s\fR, \fB\-\-sniffer\fR
+Enable IRC protocol sniffer, which logs all sent and received IRC commands to
+the console/syslog. This option requires that ngIRCd has been ./configure'd
+with "\-\-enable\-sniffer" and enables debug mode automatically, too.
+.PP
+\fBSignals:\fR
+.TP
+\fBUSR1\fR
+Toggle debug mode on and off during runtime.
+.TP
+\fBUSR2\fR
+Dump internal server state to the console/syslog when debug mode is on (use
+command line option \-\-debug or signal USR1).
+.SH AUTHORS
+Alexander Barton, <alex@barton.de>
+.br
+Florian Westphal, <fw@strlen.de>
+.PP
+Homepage: http://ngircd.barton.de/
+.SH "SEE ALSO"
+.BR ngircd.conf (5),
+.BR ircd (8)
+.\"
+.\" -eof-

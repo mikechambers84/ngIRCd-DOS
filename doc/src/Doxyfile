@@ -1,0 +1,93 @@
+#
+# ngIRCd -- The Next Generation IRC Daemon
+# Copyright (c)2001-2010 Alexander Barton (alex@barton.de)
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+# Please read the file COPYING, README and AUTHORS for more information.
+#
+# This file describes the settings to be used by the documentation system
+# doxygen (www.doxygen.org) for ngIRCd.
+#
+
+#---------------------------------------------------------------------------
+# Project related configuration options
+#---------------------------------------------------------------------------
+
+DOXYFILE_ENCODING      = UTF-8
+
+PROJECT_NAME           = ngIRCd
+PROJECT_BRIEF          = "Lightweight Internet Relay Chat server"
+PROJECT_LOGO           = "../../contrib/ngIRCd-Logo.gif"
+
+OUTPUT_DIRECTORY       = .
+STRIP_FROM_PATH        = ../..
+
+JAVADOC_AUTOBRIEF      = YES
+OPTIMIZE_OUTPUT_FOR_C  = YES
+TYPEDEF_HIDES_STRUCT   = YES
+
+TAB_SIZE               = 8
+
+#---------------------------------------------------------------------------
+# Build related configuration options
+#---------------------------------------------------------------------------
+
+EXTRACT_ALL            = YES
+EXTRACT_STATIC         = YES
+
+SHOW_DIRECTORIES       = YES
+
+#---------------------------------------------------------------------------
+# configuration options related to warning and progress messages
+#---------------------------------------------------------------------------
+
+QUIET                  = NO
+WARNINGS               = YES
+WARN_IF_UNDOCUMENTED   = YES
+WARN_IF_DOC_ERROR      = YES
+WARN_NO_PARAMDOC       = YES
+
+#---------------------------------------------------------------------------
+# configuration options related to the input files
+#---------------------------------------------------------------------------
+
+INPUT                  = ../../src
+INPUT_ENCODING         = UTF-8
+RECURSIVE              = YES
+
+#---------------------------------------------------------------------------
+# configuration options related to source browsing
+#---------------------------------------------------------------------------
+
+SOURCE_BROWSER         = YES
+STRIP_CODE_COMMENTS    = NO
+REFERENCED_BY_RELATION = YES
+REFERENCES_RELATION    = YES
+
+#---------------------------------------------------------------------------
+# Output formats
+#---------------------------------------------------------------------------
+
+GENERATE_HTML          = YES
+HTML_FOOTER            = footer.inc.html
+HTML_DYNAMIC_SECTIONS  = YES
+
+GENERATE_DOCSET        = NO
+GENERATE_HTMLHELP      = NO
+GENERATE_LATEX         = NO
+GENERATE_RTF           = NO
+GENERATE_MAN           = NO
+GENERATE_XML           = NO
+GENERATE_AUTOGEN_DEF   = NO
+GENERATE_PERLMOD       = NO
+
+#---------------------------------------------------------------------------
+# Configuration options related to the preprocessor   
+#---------------------------------------------------------------------------
+
+PREDEFINED             = DEBUG ZLIB PAM ZEROCONF CONN_MODULE __client_c__
+
+# -eof-

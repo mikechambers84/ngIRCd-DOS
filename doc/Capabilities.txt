@@ -1,0 +1,28 @@
+
+                     ngIRCd - Next Generation IRC Server
+                           http://ngircd.barton.de/
+
+               (c)2001-2012 Alexander Barton and Contributors.
+               ngIRCd is free software and published under the
+                   terms of the GNU General Public License.
+
+                            -- Capabilities.txt --
+
+
+This document lists and describes the "IRC capabilities" that ngIRCd supports
+and can be requested by a IRC/IRCv3 client that supports the "CAP" command.
+
+ngIRCd implements the "IRC Client Capabilities Extension" as described here:
+<http://ircv3.net/specs/core/capability-negotiation-3.1.html>
+
+
+I. Supported Capabilities
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+* "multi-prefix"
+
+   When requested, the multi-prefix client capability will cause the IRC
+   server to send all possible prefixes which apply to a user in NAMES and
+   WHO output.
+
+   See <http://ircv3.net/specs/extensions/multi-prefix-3.1.html>.

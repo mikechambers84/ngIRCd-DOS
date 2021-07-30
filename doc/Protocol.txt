@@ -1,0 +1,265 @@
+
+                     ngIRCd - Next Generation IRC Server
+                           http://ngircd.barton.de/
+
+               (c)2001-2019 Alexander Barton and Contributors.
+               ngIRCd is free software and published under the
+                   terms of the GNU General Public License.
+
+                              -- Protocol.txt --
+
+
+I. Compatibility
+~~~~~~~~~~~~~~~~
+
+The ngIRCd implements the Internet Relay Chat (IRC) protocol version 2.10
+as defined in RFC ("request for comment") 1459 and 2810-2813. These (and
+probably further relevant RFCs) are listed in doc/RFC.txt.
+
+Unfortunately, even the "original" ircd doesn't follow these specifications
+in all details. But because the ngIRCd should be a fully compatible
+replacement for this server ("ircd") it tries to emulate these differences.
+
+If you don't like this behavior please ./configure the ngIRCd using the
+"--enable-strict-rfc" command line option. But keep in mind: not all IRC
+clients are compatible with a server configured that way, some can't even
+connect at all! Therefore this option usually isn't desired for "normal
+server operation".
+
+In addition, ngIRCd implements some "IRCv3" features. This includes:
+ - IRCv3 Client Capability Negotiation
+ - IRCv3.1 multi-prefix Extension
+ - IRCv3.2 userhost-in-names Extension
+Please see the IRCv3 homepage for more information: <https://ircv3.net>.
+
+
+II. The IRC+ Protocol
+~~~~~~~~~~~~~~~~~~~~~
+
+Starting with version 0.5.0, the ngIRCd extends the original IRC protocol
+as defined in RFC 2810-2813. This enhanced protocol is named "IRC+". It is
+backwards compatible to the "plain" IRC protocol and will only be used by
+the ngIRCd if it detects that the peer supports it as well.
+
+The "PASS" command is used to detect the protocol and peer versions see
+RFC 2813 (section 4.1.1) and below.
+
+
+II.1 Register new server link
+
+     Command: PASS
+  Parameters: <password> <version> <flags> [<options>]
+     Used by: servers only (with these parameters)
+
+<password> is the password for this new server link as defined in the server
+configuration which is sent to the peer or received from it.
+
+<version> consists of two parts and is at least 4, at most 14 characters
+long: the first four bytes contain the IRC protocol version number, whereas
+the first two bytes represent the major version, the last two bytes the
+minor version (the string "0210" indicates version 2.10, e.g.).
+
+The following optional(!) 10 bytes contain an implementation-dependent
+version number. Servers supporting the IRC+ protocol as defined in this
+document provide the string "-IRC+" here.
+
+Example for <version>: "0210-IRC+".
+
+<flags> consists of two parts separated with the character "|" and is at
+most 100 bytes long. The first part contains the name of the implementation
+(ngIRCd sets this to "ngircd", the original ircd to "IRC", e.g.). The second
+part is implementation-dependent and should only be parsed if the peer
+supports the IRC+ protocol as well. In this case the following syntax is
+used: "<serverversion>[:<serverflags>]".
+
+<serverversion> is an ASCII representation of the clear-text server version
+number, <serverflags> indicates the supported IRC+ protocol extensions (and
+may be empty!).
+
+The following <serverflags> are defined at the moment:
+
+- C: The server supports the CHANINFO command.
+
+- L: INVITE- and BAN-lists should be synchronized between servers: if the
+     peer understands this flag, it will send "MODE +I" and "MODE +b"
+     commands after the server link has been established.
+
+- H: The server supports the "enhanced server handshake", see section II.2
+     for a detailed description.
+
+- M: Changing client "metadata" (hostname, real name, ...) using the
+     METADATA command is supported.
+
+- o: IRC operators are allowed to change channel- and channel-user-modes
+     even if they aren't channel-operator of the affected channel.
+
+- S: The server supports the SERVICE command (on this link).
+
+- X: Server supports XOP channel modes (owner, admin, halfop) and supports
+     these user prefixes in CHANINFO commands, for example.
+
+- Z: Compressed server links are supported by the server.
+
+Example for a complete <flags> string: "ngircd|0.7.5:CZ".
+
+The optional parameter <options> is used to propagate server options as
+defined in RFC 2813, section 4.1.1.
+
+
+II.2 Enhanced Server Handshake
+
+The "enhanced server handshake" is used when both servers support this IRC+
+extension, which is indicated by the 'H' flag in the <serverflags> sent with
+the PASS command, see section II.1.
+
+It basically means, that after exchanging the PASS and SERVER commands the
+server is not registered in the network (as usual), but that IRC numerics
+are exchanged until the numeric 376 (ENDOFMOTD) is received. Afterwards the
+peer is registered in the network as with the regular IRC protocol.
+
+A server implementing the enhanced server handshake (and indicating this
+using 'H' in the <serverflags>) MUST ignore all unknown numerics to it
+silently.
+
+In addition, such a server should at least send the numeric 005 (ISUPPORT)
+to its peer, containing the following information. Syntax: <key>=<value>,
+one token per IRC parameter. If the server has to send more than 12 token
+it must send separate ISUPPORT numerics (this is a limitation of the IRC
+protocol which allows at max 15 arguments per command).
+
+ - NICKLEN: Maximum nickname length. Default: 9.
+ - CASEMAPPING: Case mapping used for nick- and channel name comparing.
+   Default: "ascii", the chars [a-z] are lowercase of [A-Z].
+ - PREFIX: List of channel modes a person can get and the respective prefix
+   a channel or nickname will get in case the person has it. The order of the
+   modes goes from most powerful to least powerful. Default: "(ov)@+"
+ - CHANTYPES: Supported channel prefixes. Default: "#".
+ - CHANMODES: List of channel modes for 4 types, separated by comma (","):
+   Mode that adds or removes a nick or address to a list, mode that changes
+   a setting (both have always has a parameter), mode that changes a setting
+   and only has a parameter when set, and mode that changes a setting and
+   never has a parameter. For example "bI,k,l,imnPst".
+ - CHANLIMIT: Maximum number of channels allowed to join by channel prefix,
+   for example "#:10".
+
+Please see <http://www.irc.org/tech_docs/005.html> for details.
+
+The information exchanged using ISUPPORT can be used to detect configuration
+incompatibilities (different maximum nickname length, for example) and
+therefore to disconnect the peer prior to registering it in the network.
+
+
+II.3 Exchange channel-modes, topics, and persistent channels
+
+     Command: CHANINFO
+  Parameters: <channel> +<modes> [[<key> <limit>] <topic>]
+     Used by: servers only
+
+CHANINFO is used by servers to inform each other about a channel: its
+modes, channel key, user limits and its topic. The parameter combination
+<key> and <limit> is optional, as well as the <topic> parameter, so that
+there are three possible forms of this command:
+
+  CHANINFO <channel> +<modes>
+  CHANINFO <channel> +<modes> <topic>
+  CHANINFO <channel> +<modes> <key> <limit> <topic>
+
+If the channel already exists on the server receiving the CHANINFO command,
+it only adopts the <modes> (or the <topic>) if there are no modes (or topic)
+already set. It there are already values set the server ignores the
+corresponding parameter.
+
+If the channel doesn't exists at all it will be created.
+
+The parameter <key> must be ignored if a channel has no key (the parameter
+<modes> doesn't list the "k" channel mode). In this case <key> should
+contain "*" because the parameter <key> is required by the CHANINFO syntax
+and therefore can't be omitted. The parameter <limit> must be ignored when
+a channel has no user limit (the parameter <modes> doesn't list the "l"
+channel mode). In this case <limit> should be "0".
+
+
+II.4 Update webchat/proxy client information
+
+     Command: WEBIRC
+  Parameters: <password> <username> <hostname> <ip-address> [<ignored>]
+     Used by: unregistered clients only
+
+The WEBIRC command is used by some Web-to-IRC gateways to set the correct
+user name and host name of users instead of their own. It must be the very
+first command sent to the server, even before USER and NICK commands!
+
+The <password> must be set in the server configuration file to prevent
+unauthorized clients to fake their identity; it is an arbitrary string.
+
+Optionally, a 5th parameter is accepted to comply with an IRCv3 extension,
+see <https://github.com/ircv3/ircv3-ideas/issues/12>, but ignored.
+
+
+II.5 Client character encoding conversion
+
+     Command: CHARCONV
+  Parameters: <client-charset>
+     Used by: registered clients
+     Replies: RPL_IP_CHARCONV, ERR_IP_CHARCONV
+
+A client can set its character set encoding using the CHARCONV command:
+after receiving such a command, the server translates all message data
+received from the client using the set <client-charset> to the server
+encoding (UTF-8), and all message data which is to be sent to the client
+from the server encoding (UTF-8) to <client-charset>.
+
+The list of supported client character sets is implementation dependent.
+
+If a client sets its <client-charset> to the server encoding (UTF-8),
+it disables all conversions; the connection behaves as if no CHARCONV
+command has been sent at all in this session.
+
+
+II.6 Update client "metadata"
+
+     Command: METADATA
+  Parameters: <target> <key> <value>
+     Used by: servers only
+
+The METADATA command is used on server-links to update "metadata" information
+of clients, like the hostname, the info text ("real name"), or the user name.
+
+The server updates its client database according to the received <key> and
+<value> parameters, and passes the METADATA command on to all the other
+servers in the network that support this command (see section II.1 "Register
+new server link", <serverflag> "M"), even if it doesn't support the given
+<key> itself: unknown <key> names are ignored silently!
+
+The following <key> names are defined:
+
+ - "accountname": the account name of a client (can't be empty)
+ - "certfp": the certificate fingerprint of a client (can't be empty)
+ - "cloakhost": the cloaked hostname of a client
+ - "host": the hostname of a client (can't be empty)
+ - "info": info text ("real name") of a client
+ - "user": the user name of a client (can't be empty)
+
+
+III. Numerics used by IRC+ Protocol
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The IRC+ protocol uses numerics in the range 800-899 which aren't used by
+RFC 2812 and hopefully don't clash with other implementations ...
+
+Numerics 800-849 are used for status and success messages, and numerics
+850-899 are failure and error messages.
+
+
+III.1 IRC+ status and success numerics
+
+801 - RPL_IP_CHARCONV
+	%1 :Client encoding set"
+
+		%1	client character set
+
+
+III.2 IRC+ failure and error numerics
+
+851 - ERR_IP_CHARCONV
+	:Can't initialize client encoding

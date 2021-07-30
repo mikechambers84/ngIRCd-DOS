@@ -1,0 +1,32 @@
+
+                     ngIRCd - Next Generation IRC Server
+                           http://ngircd.barton.de/
+
+               (c)2001-2017 Alexander Barton and Contributors.
+               ngIRCd is free software and published under the
+                   terms of the GNU General Public License.
+
+                                 -- RFC.txt --
+
+
+The Internet Relay Chat (IRC) protocol is documented in these Request for
+Comments (RFCs), which you can get via <http://www.faqs.org/rfcs/> or
+<https://www.ietf.org/rfc.html> for example.
+
+  1459	Oikarinen, J. & D. Reed, "Internet Relay Chat Protocol",
+	May 1993, [IRC].
+
+  2810	Kalt, C., "Internet Relay Chat: Architecture",
+	April 2000, [IRC-ARCH].
+
+  2811	Kalt, C., "Internet Relay Chat: Channel Management",
+	April 2000, [IRC-CHAN].
+
+  2812	Kalt, C., "Internet Relay Chat: Client Protocol",
+	April 2000, [IRC-CLIENT].
+
+  2813	Kalt, C., "Internet Relay Chat: Server Protocol",
+	April 2000, [IRC-SERVER].
+
+  7194	Hartmann, R., "Default Port for Internet Relay Chat (IRC) via TLS/SSL",
+	August 2014.
