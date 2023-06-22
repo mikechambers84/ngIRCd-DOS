@@ -1,0 +1,124 @@
+From 3b84ebc9002452eaa7308827e0af3a4aef45623a Mon Sep 17 00:00:00 2001
+From: Ivan Agarkov <i_agarkov@wargaming.net>
+Date: Sun, 13 Dec 2020 21:57:41 +0300
+Subject: [PATCH] Channel autojoin functionality
+
+---
+ doc/sample-ngircd.conf.tmpl |  3 +++
+ src/ngircd/channel.c        |  2 --
+ src/ngircd/conf.c           |  3 +++
+ src/ngircd/conf.h           |  1 +
+ src/ngircd/login.c          | 31 +++++++++++++++++++++++++++++++
+ src/ngircd/login.h          |  1 +
+ 6 files changed, 39 insertions(+), 2 deletions(-)
+
+diff --git a/doc/sample-ngircd.conf.tmpl b/doc/sample-ngircd.conf.tmpl
+index 589255792..2dbc3b992 100644
+--- a/doc/sample-ngircd.conf.tmpl
++++ b/doc/sample-ngircd.conf.tmpl
+@@ -394,6 +394,9 @@
+ 	# Key file, syntax for each line: "<user>:<nick>:<key>".
+ 	# Default: none.
+ 	;KeyFile = :ETCDIR:/#chan.key
++	
++	# Autojoin - set to yes to force all users to join this channel on connect
++	;Autojoin = yes
+ 
+ [Channel]
+ 	# More [Channel] sections, if you like ...
+diff --git a/src/ngircd/channel.c b/src/ngircd/channel.c
+index d47b16f2c..03af496ba 100644
+--- a/src/ngircd/channel.c
++++ b/src/ngircd/channel.c
+@@ -186,8 +186,6 @@ Channel_InitPredefined( void )
+ 		    new_chan->name, new_chan->modes, new_chan->key,
+ 		    new_chan->maxusers);
+ 	}
+-	if (channel_count)
+-		array_free(&Conf_Channels);
+ 
+ 	/* Make sure the local &SERVER channel exists */
+ 	if (!Channel_Search("&SERVER")) {
+diff --git a/src/ngircd/conf.c b/src/ngircd/conf.c
+index 860aea8f6..5ee552e64 100644
+--- a/src/ngircd/conf.c
++++ b/src/ngircd/conf.c
+@@ -2000,6 +2000,9 @@ Handle_CHANNEL(const char *File, int Line, char *Var, char *Arg)
+ 			Config_Error_TooLong(File, Line, Var);
+ 		return;
+ 	}
++	if( strcasecmp( Var, "Autojoin" ) == 0 )
++		/* Check autojoin */
++		chan->autojoin = Check_ArgIsTrue(Arg);
+ 	if( strcasecmp( Var, "Key" ) == 0 ) {
+ 		/* Initial Channel Key (mode k) */
+ 		len = strlcpy(chan->key, Arg, sizeof(chan->key));
+diff --git a/src/ngircd/conf.h b/src/ngircd/conf.h
+index 97ce336d0..a7de2f738 100644
+--- a/src/ngircd/conf.h
++++ b/src/ngircd/conf.h
+@@ -87,6 +87,7 @@ struct Conf_Channel {
+ 	char key[CLIENT_PASS_LEN];      /**< Channel key ("password", mode "k" ) */
+ 	char topic[COMMAND_LEN];	/**< Initial topic */
+ 	char keyfile[512];		/**< Path and name of channel key file */
++	char autojoin;			/**< 1 to make all users autojoin this channel */
+ 	unsigned long maxusers;		/**< User limit for this channel, mode "l" */
+ 	unsigned int modes_num;		/**< Number of channel modes to evaluate */
+ };
+diff --git a/src/ngircd/login.c b/src/ngircd/login.c
+index 38b9a3532..a22779932 100644
+--- a/src/ngircd/login.c
++++ b/src/ngircd/login.c
+@@ -201,9 +201,40 @@ Login_User_PostAuth(CLIENT *Client)
+ 	} else
+ 		IRC_SetPenalty(Client, 1);
+ 
++  /* Autojoin clients to the channels */
++  Login_Autojoin(Client);
++
+ 	return CONNECTED;
+ }
+ 
++/**
++ * Autojoin clients to the channels set by administrator
++ * If autojoin is not set in Config or the channel is not available for search - do nothing
++ *
++ **/
++GLOBAL void 
++Login_Autojoin(CLIENT *Client)
++{
++	/** make an autojoin to each channel that is good for it **/
++	const struct Conf_Channel *conf_chan;
++	size_t i, n, channel_count = array_length(&Conf_Channels, sizeof(*conf_chan));
++	conf_chan = array_start(&Conf_Channels);
++	assert(channel_count == 0 || conf_chan != NULL);
++	REQUEST Req;
++
++	for (i = 0; i < channel_count; i++, conf_chan++) {
++		if(!conf_chan->autojoin)
++			continue;
++		if (!Channel_Search(conf_chan->name))
++			continue;
++		Req.prefix = Client_ID(Client_ThisServer());
++		Req.command = "JOIN";
++		Req.argc = 1;
++		Req.argv[0] = conf_chan->name;
++		IRC_JOIN(Client, &Req);
++	}
++}
++
+ #ifdef PAM
+ 
+ /**
+diff --git a/src/ngircd/login.h b/src/ngircd/login.h
+index 6e3a21d6b..b5d7be1e3 100644
+--- a/src/ngircd/login.h
++++ b/src/ngircd/login.h
+@@ -19,6 +19,7 @@
+ 
+ GLOBAL bool Login_User PARAMS((CLIENT * Client));
+ GLOBAL bool Login_User_PostAuth PARAMS((CLIENT *Client));
++GLOBAL void Login_Autojoin PARAMS((CLIENT *Client));
+ 
+ #endif
+ 
